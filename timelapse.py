@@ -23,7 +23,7 @@ for i in range(numphotos):
     camera.capture('/home/pi/Pictures/image{0:06d}.jpg'.format(i))
     sleep(secondsinterval)
 datenow = datetime.datetime.now()
-endnameformate = datenow.strftime("%d %B %Y at %I:%M%p")
+endnameformat = datenow.strftime("%d %B %Y at %I:%M%p")
 print("Finished: " + endnameformat)
 print("Now creating timelapse video. Please wait...")
 
