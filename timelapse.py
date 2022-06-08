@@ -22,10 +22,11 @@ system('rm /home/pi/Pictures/*.jpg') #delete all photos in the Pictures folder b
 for i in range(numphotos):
     camera.capture('/home/pi/Pictures/image{0:06d}.jpg'.format(i))
     sleep(secondsinterval)
-print("Finished taking photos.")
+datenow = datetime.datetime.now()
+endnameformate = datenow.strftime("%d %B %Y at %I:%M%p")
+print("Finished: " + endnameformat)
 print("Now creating timelapse video. Please wait...")
 
 system('ffmpeg -r {} -f image2 -s 1024x768 -nostats -loglevel 0 -pattern_type glob -i "/home/pi/Pictures/*.jpg" -vcodec libx264 -crf 25  -pix_fmt yuv420p /home/pi/Videos/{}.mp4'.format(fps, filenameformat))
 
-endnameformat = dateraw.strftime("%d %B %Y at %I:%M%p")
-print('Timelapse video is complete. Video saved as /home/pi/Videos/{}.mp4'.format(endnameformat))
+print('Timelapse video is complete. Video saved as /home/pi/Videos/{}.mp4'.format(filenameformat))
