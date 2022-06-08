@@ -7,11 +7,12 @@ timelapse = 1 #set this to the number of minutes you wish to run your timelapse 
 secondsinterval = 1 #number of seconds delay between each photo taken
 fps = 30 #frames per second timelapse video
 numphotos = int((timelapse*60)/secondsinterval) #number of photos to take
-print("Taking ", numphotos, " photos.")
+print("Taking", numphotos, "photos.")
 
-dateraw= datetime.datetime.now()
-datetimeformat = dateraw.strftime("%d %m %Y at %H:%M")
-print("Started: " + datetimeformat)
+dateraw = datetime.datetime.now()
+startnameformat = dateraw.strftime("%d %B %Y at %I:%M%p")
+filenameformat = dateraw.strftime("%d-%m-%y-%H%M%S")
+print("Started: " + startnameformat)
 
 camera = PiCamera()
 camera.resolution = (1024, 768)
@@ -24,5 +25,7 @@ for i in range(numphotos):
 print("Finished taking photos.")
 print("Now creating timelapse video. Please wait...")
 
-system('ffmpeg -r {} -f image2 -s 1024x768 -nostats -loglevel 0 -pattern_type glob -i "/home/pi/Pictures/*.jpg" -vcodec libx264 -crf 25  -pix_fmt yuv420p /home/pi/Videos/{}.mp4'.format(fps, datetimeformat))
-print('Timelapse video is complete. Video saved as /home/pi/Videos/{}.mp4'.format(datetimeformat))
+system('ffmpeg -r {} -f image2 -s 1024x768 -nostats -loglevel 0 -pattern_type glob -i "/home/pi/Pictures/*.jpg" -vcodec libx264 -crf 25  -pix_fmt yuv420p /home/pi/Videos/{}.mp4'.format(fps, filenameformat))
+
+endnameformat = dateraw.strftime("%d %B %Y at %I:%M%p")
+print('Timelapse video is complete. Video saved as /home/pi/Videos/{}.mp4'.format(endnameformat))
