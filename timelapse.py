@@ -15,7 +15,7 @@ filenameformat = dateraw.strftime("%d-%m-%y-%H%M")
 print("Started: " + startnameformat)
 
 camera = PiCamera()
-camera.resolution = (1920, 1080)
+camera.resolution = (1024, 768)
 camera.rotation = 270
 
 print("Removing any old pictures from previous timelapse.")
@@ -28,7 +28,7 @@ for i in range(numphotos):
 
 print("Now creating timelapse video. Please wait...")
 
-system('ffmpeg -r {} -f image2 -s 1920x1080 -nostats -loglevel 0 -pattern_type glob -i "/home/pi/Pictures/*.jpg" -vcodec libx264 -crf 25  -pix_fmt yuv420p /home/pi/Videos/{}.mp4'.format(fps, filenameformat))
+system('ffmpeg -r {} -f image2 -s 1024x768 -nostats -loglevel 0 -pattern_type glob -i "/home/pi/Pictures/*.jpg" -vcodec libx264 -crf 25  -pix_fmt yuv420p /home/pi/Videos/{}.mp4'.format(fps, filenameformat))
 
 print("Timelapse video is complete. Video saved as /home/pi/Videos/{}.mp4".format(filenameformat))
 sleep(10)
