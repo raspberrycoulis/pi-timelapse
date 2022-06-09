@@ -4,7 +4,7 @@ import datetime
 from time import sleep
 
 timelapse = 1 #set this to the number of minutes you wish to run your timelapse camera
-secondsinterval = 1 #number of seconds delay between each photo taken
+secondsinterval = 2 #number of seconds delay between each photo taken
 fps = 30 #frames per second timelapse video
 numphotos = int((timelapse*60)/secondsinterval) #number of photos to take
 print("Taking", numphotos, "photos.")
@@ -27,6 +27,6 @@ endnameformat = datenow.strftime("%d %B %Y at %I:%M%p")
 print("Finished: " + endnameformat)
 print("Now creating timelapse video. Please wait...")
 
-system('ffmpeg -r {} -f image2 -s 1024x768 -nostats -loglevel 0 -pattern_type glob -i "/home/pi/Pictures/*.jpg" -vcodec libx264 -crf 25  -pix_fmt yuv420p /home/pi/Videos/{}.mp4'.format(fps, filenameformat))
+system('ffmpeg -r {} -f image2 -s 1024x768 -nostats -loglevel 0 -pattern_type glob -i "/home/pi/Pictures/*.jpg" -vcodec libx264 -crf 25  -pix_fmt yuv420p /home/pi/Videos/{}.mkv'.format(fps, filenameformat))
 
-print('Timelapse video is complete. Video saved as /home/pi/Videos/{}.mp4'.format(filenameformat))
+print('Timelapse video is complete. Video saved as /home/pi/Videos/{}.mkv'.format(filenameformat))
