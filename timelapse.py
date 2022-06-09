@@ -16,6 +16,7 @@ print("Started: " + startnameformat)
 
 camera = PiCamera()
 camera.resolution = (1024, 768)
+camera.rotation = 90
 
 system('rm /home/pi/Pictures/*.jpg') #delete all photos in the Pictures folder before timelapse start
 
