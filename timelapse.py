@@ -10,8 +10,8 @@ numphotos = int((timelapse*60)/secondsinterval) #number of photos to take
 print("Taking", numphotos, "photos.")
 
 dateraw = datetime.datetime.now()
-startnameformat = dateraw.strftime("%d %B %Y at %I:%M%p")
-filenameformat = dateraw.strftime("%d-%m-%y-%H%M")
+startnameformat = dateraw.strftime("%d %B %Y at %I:%M %p")
+filenameformat = dateraw.strftime("%d%m%y-%H%M")
 print("Started: " + startnameformat)
 
 camera = PiCamera()
@@ -36,6 +36,6 @@ print("Synchronising files with Synology NAS")
 system("rsync -r --delete /home/pi/Videos/ /home/pi/synology")
 
 datenow = datetime.datetime.now()
-endnameformat = datenow.strftime("%d %B %Y at %I:%M%p")
+endnameformat = datenow.strftime("%d %B %Y at %I:%M %p")
 
 print("Finished: " + endnameformat)
