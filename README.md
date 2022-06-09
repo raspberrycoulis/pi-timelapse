@@ -1,4 +1,12 @@
-# How to Shoot Time-Lapse Videos with Raspberry Pi Camera Module
+# Timelapse photography on Raspberry Pi
+This Python script takes a pre-set number of photos over a pre-set time period using the Raspberry Pi Camera Module before converting the images into a video file (`mp4`) that can be played back on most devices. The length of the the timelapse and gap between photographs, as can the rotation can be adjusted in the `timelapse.py` code:
+
+```python
+timelapse = 2 # Time, in minutes, that the timelapse will run for. Change this to suit.
+secondsinterval = 1 # Time, in seconds, between each photograph taken. Increasing leaves a longer gap between shots.
+camera.rotation = 270 # Angle, in degrees, at which the captured images are positioned. Adjust according to how your Raspberry Pi Camera Module is positioned.
+```
+
 ## Requirements
 ### `ffmpeg`
 * Install with `sudo apt-get install ffmpeg`
