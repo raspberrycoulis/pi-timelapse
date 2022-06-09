@@ -18,7 +18,9 @@ camera = PiCamera()
 camera.resolution = (1024, 768)
 camera.rotation = 270
 
+print("Removing any old pictures from previous timelapse.")
 system('rm /home/pi/Pictures/*.jpg') #delete all photos in the Pictures folder before timelapse start
+print("Done! Now taking photos...")
 
 for i in range(numphotos):
     camera.capture('/home/pi/Pictures/image{0:06d}.jpg'.format(i))
