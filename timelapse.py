@@ -31,7 +31,7 @@ print("Now creating timelapse video. Please wait...")
 system('ffmpeg -r {} -f image2 -s 1920x1080 -nostats -loglevel 0 -pattern_type glob -i "/home/pi/Pictures/*.jpg" -vcodec libx264 -crf 25  -pix_fmt yuv420p /home/pi/Videos/{}.mp4'.format(fps, filenameformat))
 
 print("Timelapse video is complete. Video saved as /home/pi/Videos/{}.mp4".format(filenameformat))
-time.sleep(10)
+sleep(10)
 print("Synchronising files with Synology NAS")
 system("rsync -r --delete /home/pi/Videos/ /home/pi/synology")
 
